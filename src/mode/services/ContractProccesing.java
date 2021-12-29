@@ -8,15 +8,14 @@ public class ContractProccesing {
 	}
 
 	public ContractProccesing(Integer numberInstalliments) {
-		super();
 		this.numberInstaliments = numberInstalliments;
 	}
 
-	public Integer getNumberVerlangde() {
+	public Integer getInstalliments() {
 		return numberInstaliments;
 	}
 
-	public void setNumberVerlangde(Integer numberInstaliments) {
+	public void setInstalliments(Integer numberInstaliments) {
 		this.numberInstaliments = numberInstaliments;
 	}
 	

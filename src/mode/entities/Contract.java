@@ -1,21 +1,22 @@
 package mode.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
-public class Contrct {
+public class Contract {
 	
 	private Integer number;
 	private Date date;
 	private Double totalValue;
+	private Installiment installiments;
 	
 	public Contract() {
 	}
 
-	public Contrct(Integer number, Date date, Double totalValue) {
-		super();
+	public Contract(Integer number, Date date, Double totalValue, Installiment installiments) {
 		this.number = number;
 		this.date = date;
 		this.totalValue = totalValue;
+		this.installiments = installiments;
 	}
 
 	public Integer getNumber() {
@@ -37,9 +38,17 @@ public class Contrct {
 	public Double getTotalValue() {
 		return totalValue;
 	}
+	
+	public Installiment getInstalliments() {
+		return installiments;
+	}
+	
+	public void setInstalliments(Installiment installiments) {
+		this.installiments = installiments;
+	}
 
-	public void setTotalValue(Double totalValue) {
-		this.totalValue = totalValue;
+	public double totalValue() {
+		
 	}
 	
 
