@@ -1,32 +1,48 @@
 package application;
 
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
+
+import model.entities.Contract;
+import model.entities.Installiment;
+import model.services.ContractService;
+import model.services.PaypalServices;
 
 public class Program {
 
 	public static void main(String[] args) throws ParseException{
 
+SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
-		System.out.println("Enter Contract date:");
+		System.out.println("Enter contract data");
 		System.out.print("Number: ");
-		int number = sc.nextInt();
-		System.out.print("Date: (dd/MM/yyyy)");
-	    Date date = sdf.parse(sc.next());
-	    System.out.print("Contract value: ");
-	    double contractValue = sc.nextDouble();
-	    System.out.print("Enter number of installiments: ");
-	    int installiments = sc.nextInt();
-	    
-	    for(int i = 1; i<=installiments; i++) {
-	    	
-	    }
+		Integer number = sc.nextInt();
+		System.out.print("Date (dd/MM/yyyy): ");
+		Date date = sdf.parse(sc.next());
+		System.out.print("Contract value: ");
+		Double totalValue = sc.nextDouble();
+		
+		Contract contract = new Contract(number, date, totalValue);
+		
+		System.out.print("Enter number of installments: ");
+		int N = sc.nextInt();
+		
+		ContractService cs = new ContractService(new PaypalServices());
+		
+		cs.processContract(contract, N);
+		
+		System.out.println("Installments:");
+		for (Installiment it : contract.getInstalliments()) {
+			System.out.println(it);
+		}
+
+		sc.close();
 		
 	}
 

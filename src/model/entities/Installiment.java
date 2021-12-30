@@ -1,8 +1,11 @@
-package mode.entities;
+package model.entities;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Installiment {
+	
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	private Date duoDate;
 	private Double amount;
@@ -30,6 +33,11 @@ public class Installiment {
 
 	public void setAmount(Double amount) {
 		this.amount = amount;
+	}
+	
+	@Override
+	public String toString() {
+		return sdf.format(duoDate) + " - " + String.format("%.2f", amount);
 	}
 	
 }
